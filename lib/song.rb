@@ -54,7 +54,7 @@ class Song
     SELECT * FROM songs
     SQL
 
-    DB[:conn].query(query, sql).map do |row|
+    DB[:conn].execute(sql).map do |row|
       self.new_from_db(row)
     end
   end
@@ -66,10 +66,20 @@ class Song
     LIMIT 1
     SQL
 
-    DB[:conn].query(query, sql, name).map do |row|
+    DB[:conn].execute(sql, name).map do |row|
       self.new_from_db(row)
       end.first
     end
 
 
 end
+
+# Song.all
+
+# Song.find_by_name("Hello")
+
+
+
+# Song.all.first
+
+# Song.all.last.name.reverse
